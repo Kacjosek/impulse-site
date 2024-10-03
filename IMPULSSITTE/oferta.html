@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oferta - Impulse Katowice</title>
+    <link rel="stylesheet" href="oferta.css">
+    <style>
+        #admin-panel-link {
+            position: fixed;
+            bottom: 10px;
+            right: 20px;
+            background-color: #000000;
+            color: rgba(0, 0, 0, 0);
+            border: none;
+            border-radius: 5px;
+            padding: 22px 13px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+        #admin-panel-link:hover {
+            background-color: #000000;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <img src="logo.png" alt="Logo Impulse" class="logo-image">
+    </div>
+    <nav>
+        <ul class="sidebar">
+            <li class="no-hover" onclick="hideSidebar()">
+                <a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="28" viewBox="0 96 960 960" width="26">
+                    <path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg>
+                </a>
+            </li>
+            <li><a href="HOME.html">Strona Główna</a></li>
+            <li><a href="o_nas.html">O Nas</a></li>
+            <li><a href="oferta.html">Oferta</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
+        <ul>
+            <li class="hideOnMobile"><a href="HOME.html">Strona Główna</a></li>
+            <li class="hideOnMobile"><a href="o_nas.html">O Nas</a></li>
+            <li class="hideOnMobile"><a href="oferta.html">Oferta</a></li>
+            <li class="hideOnMobile"><a href="kontakt.html">Kontakt</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section id="hero">
+    <h1>Nasze Produkty</h1>
+
+    <!-- Wybór kategorii -->
+<div class="category-selection">
+    <label for="category-select">Wybierz kategorię:</label>
+    <select id="category-select" class="category-select" onchange="displayProducts()">
+        <option value="wszystkie">Wszystkie</option>
+    </select>
+</div>
+
+
+    <div id="product-list"></div> <!-- Miejsce na produkty -->
+</section>
+
+<footer>
+    <p>&copy; 2024 Impulse Katowice. Wszelkie prawa zastrzeżone.</p>
+</footer>
+
+<!-- Przycisk do panelu admina -->
+<button id="admin-panel-link" onclick="redirectToAdminPanel()">Przejdź do Panelu Admina</button>
+
+<script>
+    function showSidebar() {
+        const sidebar = document.querySelector('.sidebar');
+        sidebar.style.display = 'flex';
+    }
+
+    function hideSidebar() {
+        const sidebar = document.querySelector('.sidebar');
+        sidebar.style.display = 'none';
+    }
+
+    // Funkcja do wyświetlania produktów na podstawie wybranej kategorii
+    function displayProducts() {
+        const selectedCategory = document.getElementById('category-select').value;
+        const productList = document.getElementById('product-list');
+        const products = JSON.parse(localStorage.getItem('products')) || [];
+        productList.innerHTML = '';
+
+        products.forEach(product => {
+            if (selectedCategory === 'wszystkie' || product.category === selectedCategory) {
+                const productDiv = document.createElement('div');
+                productDiv.innerHTML = `
+                    <h3>${product.name}</h3>
+                    <p>${product.description}</p>
+                    <img src="${product.image}" alt="${product.name}" style="max-width: 200px;"/>
+                `;
+                productList.appendChild(productDiv);
+            }
+        });
+    }
+
+    // Funkcja do przekierowywania do panelu admina
+    function redirectToAdminPanel() {
+        window.location.href = "paneladmina.html";
+    }
+
+    // Wyświetl produkty po załadowaniu strony
+    displayProducts();
+
+    // Załaduj kategorie do listy rozwijanej
+    function loadCategories() {
+        const categories = JSON.parse(localStorage.getItem('categories')) || [];
+        const categorySelect = document.getElementById('category-select');
+
+        categories.forEach(category => {
+            const option = document.createElement('option');
+            option.value = category;
+            option.textContent = category;
+            categorySelect.appendChild(option);
+        });
+    }
+
+    // Załaduj kategorie po załadowaniu strony
+    loadCategories();
+</script>
+
+</body>
+</html>
