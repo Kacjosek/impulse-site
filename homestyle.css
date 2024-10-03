@@ -1,0 +1,175 @@
+/* Stylizacja ogólna */
+html, body {
+    height: 100%; /* Ustawienie wysokości dla html i body */
+    margin: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4; /* Jasny szary tło */
+    color: #333;
+    display: flex; /* Flexbox dla body */
+    flex-direction: column; /* Ułożenie w kolumnie */
+}
+
+/* Nagłówek i nawigacja */
+header {
+    background-color: rgba(255, 255, 255, 0.9); /* Przezroczysty nagłówek */
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 0 0 20px 20px; /* Zaokrąglone dolne rogi nagłówka */
+    position: fixed; /* Umożliwia stałe umiejscowienie nagłówka */
+    width: 95%; /* Szerokość nagłówka */
+    z-index: 1000; /* Umożliwia wyświetlanie nad innymi elementami */
+}
+
+.logo {
+    display: flex;
+    align-items: center; /* Wyśrodkowanie logo w pionie */
+}
+
+.logo-image {
+    height: 60px; /* Możesz dostosować wysokość logo */
+    width: auto;
+}
+
+/* Stylizacja nawigacji */
+nav {
+    position: relative; /* Aby toggle menu mogło być w tym samym miejscu */
+    margin-left: -1cm; /* Przesunięcie nawigacji o 1 cm w lewo */
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Umożliwia poziome ułożenie elementów */
+}
+
+nav ul li {
+    margin-left: 40px; /* Większy odstęp między elementami nawigacji */
+}
+
+nav ul li a {
+    color: #333;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px 20px;
+    border-radius: 20px; /* Stałe zaokrąglenie */
+    transition: background-color 0.3s ease, border-radius 0.3s ease; /* Dodanie płynnego przejścia dla obramowania */
+}
+
+nav ul li a:hover {
+    background-color: #cfcfcf; /* Jaśniejszy szary na hover */
+    border-radius: 20px; /* Upewnij się, że zaokrąglenie pozostaje na hover */
+}
+
+
+
+/* Sekcje */
+section {
+    padding: 80px 20px; /* Większe marginesy górne dla sekcji */
+    text-align: center; /* Wyśrodkowanie tekstu */
+    margin: 0px 0; /* Odstęp między sekcjami */
+    background-color: white; /* Białe tło sekcji */
+    border-radius: 10px; /* Zaokrąglone sekcje */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Delikatny cień */
+    flex-grow: 1; /* Umożliwia zajęcie dostępnej przestrzeni */
+}
+
+h1 {
+    color: #000000; /* Czerwony akcent */
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+/* Stopka */
+footer {
+    background-color: #000000; /* Czerwony akcent */
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    border-radius: 20px 20px 0 0; /* Zaokrąglone górne rogi stopki */
+}
+
+/* Stylizacja sidebar */
+nav ul li {
+    margin-left: 40px; /* Większy odstęp między elementami nawigacji */
+    
+   
+}
+
+.sidebar {
+    position: fixed;
+    top: 0; 
+    right: 0;
+    height: 100vh;
+    width: 250px;
+    background-color: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
+    list-style: none;
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    
+}
+
+.sidebar li {
+    width: 100%;
+}
+
+.sidebar a {
+    width: 100%;
+}
+
+.menu-button {
+    display: none;
+}
+
+@media (max-width: 800px) {
+    .hideOnMobile {
+        display: none;
+    }
+    .menu-button {
+        display: block;
+    }
+}
+
+@media (max-width: 400px) {
+    .sidebar {
+        width: 100%;
+    }
+}
+
+.no-hover a {
+    pointer-events: none; /* Wyłącza wszelkie akcje użytkownika (jeśli chcesz całkowicie zablokować interakcję) */
+}
+
+.no-hover a:hover, 
+.no-hover:hover {
+    background-color: none; /* Brak zmiany tła na hover */
+    outline: none; /* Brak obramowania */
+    box-shadow: none; /* Brak cienia na hover */
+    cursor: default; /* Opcjonalnie, ustawienie kursora na domyślny */
+    border-radius: 20px 20px 20px 20px;
+   
+    
+    
+}
+
+.no-hover {
+    margin-left: 1cm; 
+
+}
+
+
+
+
+
+
+
+
